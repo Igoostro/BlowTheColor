@@ -11,8 +11,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -21,23 +19,23 @@ import javax.swing.JPanel;
  * @author dell
  */
 public class BlowTheColor extends Canvas implements Runnable{
-    public static JFrame frame;
-    public static JPanel loadwindow;
+    public static JFrame       frame;
+    public static JPanel       loadwindow;
     public static BlowTheColor gamewindow;
     
     private static final int WIDTH = 1024;
     private static final int HEIGHT = 768;
     
-    private int fps;
+    private int  fps;
     private long fpsStart;
     
     private static Dimension size;
     
     private boolean running;
-    private Thread thread;
+    private Thread  thread;
     
     private Screen screen;
-    private Game game;
+    private Game   game;
     
     public BlowTheColor() throws IOException{
         size = new Dimension(WIDTH, HEIGHT);
@@ -79,7 +77,6 @@ public class BlowTheColor extends Canvas implements Runnable{
                 render();//Render
             } catch (IOException ex) {
                 ex.printStackTrace();
-                //Logger.getLogger(MindGames.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             fps++;
@@ -88,8 +85,6 @@ public class BlowTheColor extends Canvas implements Runnable{
                 fpsStart=System.nanoTime();
                 fps=0;
             }
-            
-            
         }
     }
     
@@ -118,17 +113,14 @@ public class BlowTheColor extends Canvas implements Runnable{
         loadwindow = new LoadPanel();
         gamewindow = new BlowTheColor();
         
-        frame = new JFrame("Blow Rhe Color!");
-        //frame.add(gamewindow);
-        frame.add(loadwindow);
-        frame.pack();
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setSize(size);
+        frame = new JFrame            ("Blow Rhe Color!");
+        frame.add                     (loadwindow);
+        frame.pack                    ();
+        frame.setResizable            (false);
+        frame.setLocationRelativeTo   (null);
+        frame.setSize                 (size);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        
-        //gamewindow.start();
+        frame.setVisible              (true);
     }
 }
     

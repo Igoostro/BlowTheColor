@@ -52,6 +52,9 @@ public class Profiles extends JPanel implements ActionListener {
     private JTextField  newProfileName;
     private JLabel      profileName;
     
+    private ImageIcon normalIcon;
+    private ImageIcon hoverIcon;
+    
     public Profiles(int id){
         this.id = id;
         status  = status.NORMAL;
@@ -76,6 +79,9 @@ public class Profiles extends JPanel implements ActionListener {
         profileName.setFont      (new Font("Berlin Sans FB", Font.PLAIN, 20));
         profileName.setForeground(Color.LIGHT_GRAY);
         
+        normalIcon = new ImageIcon("images/profiles.png");
+        hoverIcon = new ImageIcon("images/profiles_hover.png");
+        
         this.add  (profileName);
         setVisible(true);
     }
@@ -85,9 +91,9 @@ public class Profiles extends JPanel implements ActionListener {
         super.paintComponent(g);
         Image img;
         if(status == status.NORMAL)
-            img = new ImageIcon("images/profiles.png").getImage();
+            img = normalIcon.getImage();
         else if(status == status.HOVER)
-            img = new ImageIcon("images/profiles_hover.png").getImage();
+            img = hoverIcon.getImage();
         else
             img = null;
         g.drawImage(img, 0, 0, null);
